@@ -1,0 +1,45 @@
+version: '2'
+services:
+
+  reconcileapp:
+    image: "ubuntu:14.04"
+    container_name: reconcileapp
+    volumes:
+      - ./../bin/reconcile/:/usr/local/bin/
+      - /etc/ssl/certs:/etc/ssl/certs
+      - ./../files/config/reconcileapp:/etc/reconcile-config/
+    ports:
+      - "3021:3021"
+      - "30021:30021"
+    depends_on:
+      - reconcile-db
+      - cache
+    links:
+      - reconcile-db
+    command: tail -f /dev/null
+    environment:
+      - TZ=Asia/Jakarta
+
+  reconcile-db:
+    image: mysql:5.7
+    container_name: reconcile-db
+    volumes:
+      - /docker/reconcile-db:/var/lib/mysql
+      - ./bin/setup-reconcile-db.sh:/usr/local/bin/setup.sh
+      - ./../files/database/reconcileapp:/etc/database/
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: reconcile_db
+      MYSQL_ROOT_PASSWORD:
+      TZ: Asia/Jakarta
+    ports:
+      - "33062:3306"
+
+
+  cache:
+    image: redis:alpine
+    volumes:
+      - /docker/redis-cache:/data
+    ports:
+      - "6380:6379"

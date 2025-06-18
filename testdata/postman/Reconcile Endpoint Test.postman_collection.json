@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "e2851f09-63d8-485f-b2f0-4fc13720f7ef",
+		"name": "Reconcile Endpoint Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "594900"
+	},
+	"item": [
+		{
+			"name": "POST /reconcile success 0 discrep",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "system_transaction_csv_file",
+							"type": "file",
+							"src": "/C:/Users/julvi/Downloads/testfolder/normal/sample transaction.csv"
+						},
+						{
+							"key": "bank_statement_csv_files",
+							"type": "file",
+							"src": "/C:/Users/julvi/Downloads/testfolder/normal/sample bankstatement.csv"
+						},
+						{
+							"key": "bank_statement_csv_files",
+							"type": "file",
+							"src": "/C:/Users/julvi/Downloads/testfolder/normal/sample_bankstatement2.csv"
+						},
+						{
+							"key": "start_date",
+							"value": "2024-01-01",
+							"type": "text"
+						},
+						{
+							"key": "end_date",
+							"value": "2024-12-31",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:3021/api/reconcile"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /reconcile transcation discrep",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "system_transaction_csv_file",
+							"type": "file",
+							"src": "/C:/Users/julvi/Downloads/testfolder/annormaltransaction/sample transaction.csv"
+						},
+						{
+							"key": "bank_statement_csv_files",
+							"type": "file",
+							"src": "/C:/Users/julvi/Downloads/testfolder/annormaltransaction/sample bankstatement.csv"
+						},
+						{
+							"key": "start_date",
+							"value": "2024-01-01",
+							"type": "text"
+						},
+						{
+							"key": "end_date",
+							"value": "2024-12-31",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:3021/api/reconcile"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /reconcile bankstatement discrep",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "system_transaction_csv_file",
+							"type": "file",
+							"src": "/C:/Users/julvi/Downloads/testfolder/annormalstatement/sample transaction.csv"
+						},
+						{
+							"key": "bank_statement_csv_files",
+							"type": "file",
+							"src": "/C:/Users/julvi/Downloads/testfolder/annormalstatement/sample bankstatement.csv"
+						},
+						{
+							"key": "start_date",
+							"value": "2024-01-01",
+							"type": "text"
+						},
+						{
+							"key": "end_date",
+							"value": "2024-12-31",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:3021/api/reconcile"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /reconcile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "system_transaction_csv_file",
+							"type": "file",
+							"src": "/C:/Users/julvi/Downloads/testfolder/normal/sample transaction.csv",
+							"disabled": true
+						},
+						{
+							"key": "bank_statement_csv_files",
+							"type": "file",
+							"src": "/C:/Users/julvi/Downloads/testfolder/normal/sample bankstatement.csv",
+							"disabled": true
+						},
+						{
+							"key": "bank_statement_csv_files",
+							"type": "file",
+							"src": "/C:/Users/julvi/Downloads/testfolder/normal/sample_bankstatement2.csv",
+							"disabled": true
+						},
+						{
+							"key": "start_date",
+							"value": "2024-01-01",
+							"type": "text"
+						},
+						{
+							"key": "end_date",
+							"value": "2024-12-31",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3021/api/reconcile?start_date=2024-01-01&end_date=2024-12-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3021",
+					"path": [
+						"api",
+						"reconcile"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2024-01-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2024-12-31"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
