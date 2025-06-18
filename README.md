@@ -140,14 +140,16 @@ You can use Postman to manually test the `/api/reconcile` endpoint with the foll
 - Click **Send**.
 - Check that discrepancies in the bank statement are reported.
 
-#### d. GET `/reconcile` - Query by Date Range
+
+
+### 5. Review Responses
+
+#### GET `/reconcile` - Query by Date Range
 
 - Select **GET /reconcile**.
 - Ensure the `start_date` and `end_date` query parameters are set.
 - Click **Send**.
 - Verify the reconciliation results for the specified date range.
-
-### 5. Review Responses
 
 - Each response should match the expected results described in the test cases section above.
 
